@@ -40,54 +40,6 @@ export const Doc = defineDocumentType(() => ({
     description: {
       type: "string",
     },
-    published: {
-      type: "boolean",
-      default: true,
-    },
-  },
-  computedFields: defaultComputedFields,
-}));
-
-export const Post = defineDocumentType(() => ({
-  name: "Post",
-  filePathPattern: `blog/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      required: true,
-    },
-    description: {
-      type: "string",
-    },
-    date: {
-      type: "date",
-      required: true,
-    },
-    published: {
-      type: "boolean",
-      default: true,
-    },
-    image: {
-      type: "string",
-      required: true,
-    },
-    authors: {
-      type: "list",
-      of: { type: "string" },
-      required: true,
-    },
-    categories: {
-      type: "list",
-      of: {
-        type: "enum",
-        options: ["news", "education"],
-        default: "news",
-      },
-      required: true,
-    },
-    related: {
-      type: "list",
       of: {
         type: "string",
       },
@@ -106,7 +58,7 @@ export const Page = defineDocumentType(() => ({
       required: true,
     },
     description: {
-      type: "string",
+documentTypes: [Page, Doc],
     },
   },
   computedFields: defaultComputedFields,
